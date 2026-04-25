@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vulnerable-pod
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      securityContext:
+        runAsUser: 0              # ❌ Runs as root
+        allowPrivilegeEscalation: true  # ❌ Privilege escalation allowed
+      resources:
+        limits:
+          cpu: "500m"
+          memory: "128Mi"
+      volumeMounts:
+        - name: host-volume
+          mountPath: /host        # ❌ Mounting host path
+  volumes:
+    - name: host-volume
+      hostPath:
+        path: /                   # ❌ Host root mounted
