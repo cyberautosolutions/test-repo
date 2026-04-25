@@ -1,0 +1,9 @@
+{
+  "name": "testing package",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "body-parser-xml": "^1.0.0",
+    "xml-crypto": "^1.4.0"
+  }
+}
